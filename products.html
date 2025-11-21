@@ -29,7 +29,7 @@
             <!-- Left Links (desktop only) -->
             <nav class="nav-left">
                 <a href="#">Home</a>
-                <a href="products.html">Products</a>
+                <a href="#">Products</a>
                 <a href="#">About</a>
             </nav>
 
@@ -49,7 +49,7 @@
         <!-- Mobile Full-Screen Menu stays exactly the same -->
         <div class="mobile-menu">
             <a href="#">Home</a>
-            <a href="products.html">Products</a>
+            <a href="#">Products</a>
             <a href="#">About</a>
             <div class="mobile-social">
                 <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -61,58 +61,27 @@
 
 
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>New Collection</h1>
-            <p>Timeless pieces for modern living</p>
-            <a href="#categories" class="btn">Shop Now</a>
-        </div>
-    </section>
+    <!-- PRODUCTS PAGE CONTENT -->
+    <main class="products-page">
 
-
-    <!-- CATEGORIES SECTION -->
-    <section class="categories" id="categories">
         <div class="container">
+            <!-- <h1 class="page-title">All Products</h1> -->
 
-            <h2 class="section-title">Shop by Category</h2>
-
-            <div class="categories-grid">
-                <!-- Card 1 -->
-                <a href="#" class="category-card">
-                    <img src="images/hero.jpg" alt="Women">
-                    <div class="overlay">
-                        <h3>Hoodies</h3>
-                    </div>
-                </a>
-
-                <!-- Card 2 -->
-                <a href="#" class="category-card">
-                    <img src="images/hero.jpg" alt="Men">
-                    <div class="overlay">
-                        <h3>Pants</h3>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="#" class="category-card">
-                    <img src="images/hero.jpg" alt="Accessories">
-                    <div class="overlay">
-                        <h3>Shoes</h3>
-                    </div>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="#" class="category-card">
-                    <img src="images/hero.jpg" alt="New In">
-                    <div class="overlay">
-                        <h3>Jackets</h3>
-                    </div>
-                </a>
+            <!-- CATEGORY FILTER MENU -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="women">Women</button>
+                <button class="filter-btn" data-category="men">Men</button>
+                <button class="filter-btn" data-category="accessories">Accessories</button>
+                <button class="filter-btn" data-category="new">New In</button>
             </div>
 
+            <!-- PRODUCTS GRID -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be injected here by JavaScript -->
+            </div>
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
