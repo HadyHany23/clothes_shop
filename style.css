@@ -515,6 +515,34 @@ body {
   font-weight: 600;
 }
 
+.old-price { 
+  text-decoration: line-through; 
+  color: #999; 
+  font-size: 18px; 
+  margin-right: 8px;
+}
+.sale-badge {
+  background: #e74c3c;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+.new-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+.sale-price-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
 /* No products message */
 .no-products {
   grid-column: 1 / -1;
@@ -844,7 +872,6 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 main {

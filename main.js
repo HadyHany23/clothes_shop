@@ -18,7 +18,7 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
 let allData = { categories: [], products: [] };
 
 // Your Google Apps Script Web App URL (replace only if you make new deployment)
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbyc5tUFGO4Q_YA010nHPZTVZLHtH2nK2iPY-W_qVYNlWDiT4Ulk_0z3gw9I0teVb_qh/exec";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbx6z_L23TwMp3M3zQBVvectFtnf55SZgga7-oOmWetnShNtReVMl87gr-t_9JRS3U8k/exec";
 
 // ================================================
 // 1. LOAD DATA FROM GOOGLE SHEETS
@@ -78,7 +78,12 @@ function renderProducts(filter = "all") {
       <div class="product-card" onclick="openProductDetails('${product.code}')">
         <img src="${product.images[0] || 'images/hero.jpg'}" alt="${product.name}">
         <h3>${product.name}</h3>
-        <p class="price">${product.price}</p>
+        <p class="price">
+        ${product.sale_price > 0 && product.sale_price < product.price
+        ? `<del>EG ${product.price}</del> <strong>EG ${product.sale_price}</strong>`
+        : `EG ${product.price}`
+      }
+</p>
       </div>
     `).join('');
   }
@@ -160,7 +165,20 @@ function loadProductDetails() {
   // تعبئة البيانات
   document.getElementById('productName').textContent = product.name;
   document.getElementById('productCode').textContent = product.code;
-  document.getElementById('productPrice').textContent = product.price;
+  // Replace the old price line with this
+  const priceContainer = document.getElementById('productPrice');
+
+  if (product.sale_price > 0 && product.sale_price < product.price) {
+    priceContainer.innerHTML = `
+    <div class="sale-price-wrapper">
+      <span class="old-price">EG ${product.price}</span>
+      <span class="sale-badge">SALE</span>
+      <div class="new-price">EG ${product.sale_price}</div>
+    </div>
+  `;
+  } else {
+    priceContainer.innerHTML = `<div class="new-price">EG ${product.price}</div>`;
+  }
 
   // معرض الصور الصغير
   const thumbContainer = document.querySelector('.thumbnail-slider');
