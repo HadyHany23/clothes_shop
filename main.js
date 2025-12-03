@@ -23,7 +23,7 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
 let allData = { categories: [], products: [] };
 
 // Your Google Apps Script Web App URL (replace only if you make new deployment)
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbwoJ6UAtw3SnNYaPbwgpiI2swLmh_hDtVzcEyROEcR48Ifh7FgwUqRErJXnk1Emb-ln/exec";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbwShLdla3nK15jdOlFVnIyaq36kY-BhwyJMOYNcRVT2FaDHGAaIQVZan16gP82BYDuI/exec";
 
 // ================================================
 // 1. LOAD DATA FROM GOOGLE SHEETS
@@ -224,6 +224,75 @@ function loadProductDetails() {
     }
     sizesContainer.appendChild(btn);
   });
+
+  // === COLOR SELECTOR – WORKS WITH TEXT ONLY LIKE "Black, Red, Rose Gold" ===
+const colorsContainer = document.getElementById('colorsContainer');
+colorsContainer.innerHTML = '';
+
+if (!product.colors || product.colors.trim() === '') {
+    colorsContainer.innerHTML = '<span style="color:#aaa;font-size:14px;">No colors</span>';
+} else {
+    const colorList = product.colors
+        .split(',')                    // split by comma
+        .map(c => c.trim())            // remove spaces
+        .filter(c => c !== '');        // remove empty
+
+    colorList.forEach((colorName, index) => {
+        const btn = document.createElement('div');
+        btn.className = 'color-btn';
+        btn.textContent = colorName.replace(' (Sold Out)', '');
+
+        const isSoldOut = colorName.toLowerCase().includes('(sold out)');
+        if (isSoldOut) btn.classList.add('sold-out');
+
+        // List of real CSS colors (add more if you want)
+        const realColors = {
+            black: '#000000',
+            white: '#ffffff',
+            red: '#ff0000',
+            blue: '#0066ff',
+            green: '#00aa00',
+            yellow: '#ffff00',
+            pink: '#ff66cc',
+            gray: '#888888',
+            grey: '#888888',
+            orange: '#ff8800',
+            purple: '#8800ff',
+            brown: '#8b4513',
+            navy: '#000080',
+            gold: '#ffd700',
+            silver: '#c0c0c0',
+            beige: '#f5f5dc',
+            olive: '#808000'
+        };
+
+        const lowerName = colorName.toLowerCase().replace(/[^a-z]/g, '');
+        const hex = realColors[lowerName];
+
+        if (hex && !isSoldOut) {
+            btn.style.backgroundColor = hex;
+            btn.style.borderColor = hex === '#ffffff' ? '#ccc' : hex;
+            btn.title = colorName;
+        } else {
+            btn.classList.add('text-only');
+        }
+
+        // Click to select
+        if (!isSoldOut) {
+            btn.onclick = () => {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            };
+        }
+
+        // Auto select first available
+        if (index === 0 && !isSoldOut) {
+            btn.classList.add('active');
+        }
+
+        colorsContainer.appendChild(btn);
+    });
+}
 
   const firstAvailable = document.querySelector('.size-btn.available');
   if (firstAvailable) firstAvailable.classList.add('active');

@@ -830,15 +830,18 @@ a:hover i.fa-whatsapp {
 
 .main-image img {
   width: 100%;
+  max-width: 50vw;
   height: auto;
+  max-height: 100vh;
   object-fit: cover;
   border: 1px solid #eee;
 }
 
 .thumbnail-slider {
   display: flex;
+  max-width: 40vw;
   gap: 15px;
-  overflow-x: auto;
+  overflow-x: scroll;
   padding: 10px 0;
 }
 
@@ -856,6 +859,39 @@ a:hover i.fa-whatsapp {
 .thumbnail-slider img:hover {
   opacity: 1;
   border-color: #000;
+}
+
+.thumbnail-slider {
+  display: flex;
+  max-width: 40vw;
+  gap: 15px;
+  overflow-x: scroll;
+  padding: 10px 0;
+
+  /* Optional smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar width */
+.thumbnail-slider::-webkit-scrollbar {
+  height: 8px; /* horizontal scrollbar height */
+}
+
+/* Scrollbar track */
+.thumbnail-slider::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-radius: 10px;
+}
+
+/* Scrollbar thumb */
+.thumbnail-slider::-webkit-scrollbar-thumb {
+  background: #000;  /* black thumb */
+  border-radius: 10px;
+}
+
+/* On hover */
+.thumbnail-slider::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
 
 /* Right side */
@@ -954,6 +990,70 @@ a:hover i.fa-whatsapp {
   font-size: 16px;
 }
 
+/* color selector */
+.color-selector {
+  margin: 25px 0 10px;
+}
+
+.color-selector p {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.color-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 2.5px solid #ddd;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+}
+
+.color-btn.active {
+  border-color: #000;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.color-btn.sold-out {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.color-btn.sold-out::after {
+  content: "";
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  right: -10%;
+  height: 2px;
+  background: #999;
+  transform: rotate(-45deg);
+}
+
+.color-btn.text-only {
+  background: #f9f9f9;
+  color: #333;
+  width: auto;
+  min-width: 70px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
 /* MOBILE */
 @media (max-width: 968px) {
   .product-wrapper {
@@ -968,17 +1068,37 @@ a:hover i.fa-whatsapp {
   .product-info h1 {
     font-size: 36px;
   }
-}
 
-@media (max-width: 480px) {
-  .main-image img {
+  .thumbnail-slider {
+    max-width: 40vw;
     height: auto;
+    overflow-x: scroll;
   }
 
   .thumbnail-slider img {
     width: 80px;
     height: 80px;
   }
+
+}
+
+@media (max-width: 480px) {
+  .main-image img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .thumbnail-slider {
+    max-width: 90vw;
+    height: auto;
+    overflow-x: scroll;
+  }
+
+  .thumbnail-slider img {
+    width: 80px;
+    height: 80px;
+  }
+
 }
 
 /* Loading spinner */
