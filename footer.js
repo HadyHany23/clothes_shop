@@ -6,8 +6,8 @@ function loadFooter() {
 
             <!-- Logo + short text -->
             <div class="footer-col">
-                <div class="logo footer-logo">Stock White</div>
-                <p>Timeless minimal fashion<br>Designed in 2025</p>
+                <div class="logo footer-logo">StockWhite</div>
+                <p>Timeless minimal fashion<br>your style starts here</p>
             </div>
 
             <!-- Social icons -->
@@ -29,7 +29,7 @@ function loadFooter() {
         <!-- Copyright -->
         <div class="footer-bottom">
             <div class="container">
-                © 2025 Stock White. All rights reserved.
+                © 2025 StockWhite. All rights reserved.
             </div>
         </div>
     </footer>
