@@ -311,7 +311,7 @@ a:hover i.fa-whatsapp {
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
-  transition: var(--transition);
+  transition: all 0.5s ease-in-out;
 }
 
 .btn:hover {
@@ -344,7 +344,7 @@ a:hover i.fa-whatsapp {
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 15px;
 }
 
 .category-card {
@@ -394,6 +394,7 @@ a:hover i.fa-whatsapp {
 @media (max-width: 1024px) {
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .section-title {
@@ -632,10 +633,13 @@ a:hover i.fa-whatsapp {
 }
 
 /* Mobile */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .footer-inner {
     flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; 
   }
 
   .footer-social {
@@ -1499,6 +1503,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
